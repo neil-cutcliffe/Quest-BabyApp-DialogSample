@@ -13,7 +13,7 @@
  **********************************************************************/
 
 import React from 'react';
-import { Button, Dialog } from '@mui/material';
+import { Dialog, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Image1Image from 'src/assets/images/DialogSample_Image.png';
 import Form1 from 'src/components/Form1/Form1';
@@ -36,6 +36,47 @@ const TypeQuest = styled('div')({
   overflow: `hidden`,
 });
 
+const Image1 = styled('div')({
+  backgroundImage: `url(${Image1Image})`,
+  backgroundPosition: `center`,
+  backgroundSize: `cover`,
+  backgroundRepeat: `no-repeat`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  width: `390px`,
+  height: `257px`,
+  margin: `0px`,
+});
+
+const Contactusframe = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 1)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `380px`,
+  height: `624px`,
+  margin: `0px 0px 0px 22px`,
+  overflow: `hidden`,
+});
+
+const Form11 = styled(Form1)(({ theme }) => ({
+  flex: `1`,
+  position: `absolute`,
+  left: `33px`,
+  top: `23px`,
+}));
+
 const Cardframe = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
   borderRadius: `0px`,
@@ -47,28 +88,10 @@ const Cardframe = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `383px`,
-  height: `456px`,
-  margin: `0px`,
-  overflow: `hidden`,
-});
-
-const Image1 = styled('div')({
-  backgroundImage: `url(${Image1Image})`,
-  backgroundPosition: `center`,
-  backgroundSize: `cover`,
-  backgroundRepeat: `no-repeat`,
-  borderRadius: `0px`,
-  display: `flex`,
-  position: `absolute`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  alignSelf: `stretch`,
   width: `390px`,
-  left: `0px`,
-  top: `0px`,
+  height: `392px`,
+  margin: `0px 0px 0px 22px`,
+  overflow: `hidden`,
 });
 
 const TextButton = styled('div')({
@@ -84,7 +107,7 @@ const TextButton = styled('div')({
   alignSelf: `stretch`,
   width: `390px`,
   left: `0px`,
-  top: `279px`,
+  top: `117px`,
 });
 
 const LoremIpsumTestToBeSe = styled('div')(({ theme }) => ({
@@ -128,37 +151,18 @@ const ButtonContained = styled(Button)({
   margin: `15px 0px 0px 0px`,
 });
 
-const Contactusframe = styled('div')({
-  backgroundColor: `rgba(255, 255, 255, 1)`,
-  borderRadius: `0px`,
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  boxSizing: `border-box`,
-  width: `383px`,
-  height: `624px`,
-  margin: `0px 0px 0px 22px`,
-  overflow: `hidden`,
-});
-
-const Form11 = styled(Form1)(({ theme }) => ({
-  flex: `1`,
-  position: `absolute`,
-  left: `33px`,
-  top: `23px`,
-}));
-
 function DialogSample(props) {
   const { data, fns } = useDialogSample();
 
   return (
     <TypeQuest className={props.className}>
+      <Image1></Image1>
+      <Dialog open={data.isDialogOpen} onClose={fns.toggleDialog}>
+        <Contactusframe>
+          <Form11 open={data.isDialogOpen} onClose={fns.toggleDialog} />
+        </Contactusframe>
+      </Dialog>
       <Cardframe>
-        <Image1></Image1>
         <TextButton>
           <LoremIpsumTestToBeSe>
             {`Lorem ipsum test to be seen and not read for placement only. Lorem ipsum test to be seen.`}
@@ -175,11 +179,6 @@ function DialogSample(props) {
           </ButtonContained>
         </TextButton>
       </Cardframe>
-      <Dialog open={data.isDialogOpen} onClose={fns.toggleDialog}>
-        <Contactusframe>
-          <Form11 open={data.isDialogOpen} onClose={fns.toggleDialog} />
-        </Contactusframe>
-      </Dialog>
     </TypeQuest>
   );
 }
